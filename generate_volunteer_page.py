@@ -152,7 +152,7 @@ volunteer_page_content = """
                             <p class="gallery-desc" style="margin: 0;">Serving through the National Honor Society, I organized peer tutoring, managed community clean-ups, and coordinated school-wide charity drives. Consistency and reliable commitment were key to my role.</p>
                         </div>
                         <div class="slide-image">
-                            <img src="nhs_volunteering.png" alt="National Honor Society Volunteering">
+                            <img src="nhs_volunteering.webp" alt="National Honor Society Volunteering">
                         </div>
                     </div>
                     <!-- Slide 2 -->
@@ -163,7 +163,7 @@ volunteer_page_content = """
                             <p class="gallery-desc" style="margin: 0;">Beyond the logistics and planning, the bake sale involved extensive volunteer hours coordinating teams, managing booths on the day, and ensuring total transparency for the AED 2,000+ raised.</p>
                         </div>
                         <div class="slide-image">
-                            <img src="bake_sale.png" alt="Charity Bake Sale">
+                            <img src="bake_sale.webp" alt="Charity Bake Sale">
                         </div>
                     </div>
                     <!-- Slide 3 -->
@@ -174,7 +174,7 @@ volunteer_page_content = """
                             <p class="gallery-desc" style="margin: 0;">Dedicated extensive hours to promoting sustainability on campus and in the local community. This included organizing recycling initiatives and raising awareness about ecological footprints among the student body.</p>
                         </div>
                         <div class="slide-image">
-                            <img src="sustainability.png" alt="Sustainability Ambassador">
+                            <img src="sustainability.webp" alt="Sustainability Ambassador">
                         </div>
                     </div>
                     <!-- Slide 4 -->
@@ -185,7 +185,7 @@ volunteer_page_content = """
                             <p class="gallery-desc" style="margin: 0;">Volunteered significant time as a mentor for younger students in the Debate Club, guiding them step-by-step through argument structuring, public speaking techniques, and building intellectual confidence.</p>
                         </div>
                         <div class="slide-image">
-                            <img src="debate_club.png" alt="Debate Club Mentoring">
+                            <img src="debate_club.webp" alt="Debate Club Mentoring">
                         </div>
                     </div>
 

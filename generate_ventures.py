@@ -49,8 +49,8 @@ pages = {
                     Around UAE National Day, I noticed people were looking for pins and there wasn't really anywhere to get them at school. Myself and my team handled everything such as buying, selling, and keeping track of stock. It taught me more about how sales actually work than any class did.
                 </p>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-                    <img src="UAE_Pins_1.png" alt="UAE National Day Pins 1" style="width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); object-fit: cover;">
-                    <img src="UAE_Pins_2.png" alt="UAE National Day Pins 2" style="width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); object-fit: cover;">
+                    <img src="UAE_Pins_1.webp" alt="UAE National Day Pins 1" style="width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); object-fit: cover;">
+                    <img src="UAE_Pins_2.webp" alt="UAE National Day Pins 2" style="width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); object-fit: cover;">
                 </div>
             </div>
         """
@@ -77,14 +77,14 @@ pages = {
                 </style>
                 
                 <div style="position: relative; max-width: 100%; display: flex; flex-direction: column; justify-content: center;">
-                    <div class="date-slide active"><img src="Date Plan/IMG_3251.jpg"></div>
-                    <div class="date-slide"><img src="Date Plan/IMG_3259.png"></div>
-                    <div class="date-slide"><img src="Date Plan/IMG_3661.png"></div>
-                    <div class="date-slide"><img src="Date Plan/Screenshot 2026-04-09 at 3.59.12 PM.png"></div>
-                    <div class="date-slide"><img src="Date Plan/Screenshot 2026-04-09 at 3.59.42 PM.png"></div>
-                    <div class="date-slide"><img src="Date Plan/Screenshot 2026-04-09 at 4.00.23 PM.png"></div>
-                    <div class="date-slide"><img src="Date Plan/Generated Image April 09, 2026 - 4_02PM.png"></div>
-                    <div class="date-slide"><img src="Date Plan/Generated Image April 09, 2026 - 4_03PM.png"></div>
+                    <div class="date-slide active"><img src="Date Plan/IMG_3251.webp"></div>
+                    <div class="date-slide"><img src="Date Plan/IMG_3259.webp"></div>
+                    <div class="date-slide"><img src="Date Plan/IMG_3661.webp"></div>
+                    <div class="date-slide"><img src="Date Plan/Screenshot 2026-04-09 at 3.59.12 PM.webp"></div>
+                    <div class="date-slide"><img src="Date Plan/Screenshot 2026-04-09 at 3.59.42 PM.webp"></div>
+                    <div class="date-slide"><img src="Date Plan/Screenshot 2026-04-09 at 4.00.23 PM.webp"></div>
+                    <div class="date-slide"><img src="Date Plan/Generated Image April 09, 2026 - 4_02PM.webp"></div>
+                    <div class="date-slide"><img src="Date Plan/Generated Image April 09, 2026 - 4_03PM.webp"></div>
 
                     <div class="date-controls">
                         <div class="date-btn" onclick="nextDateSlide(-1)">&#10094;</div>
@@ -143,12 +143,12 @@ pages = {
                 </style>
                 
                 <div style="position: relative; max-width: 100%; display: flex; flex-direction: column; justify-content: center;">
-                    <div class="bake-slide active"><img src="Bake Sale/IMG_5667.PNG"></div>
-                    <div class="bake-slide"><img src="Bake Sale/IMG_6507 copy.png"></div>
-                    <div class="bake-slide"><img src="Bake Sale/IMG_6512 copy.png"></div>
-                    <div class="bake-slide"><img src="Bake Sale/IMG_6515.png"></div>
-                    <div class="bake-slide"><img src="Bake Sale/Screenshot 2026-04-09 at 5.05.29 PM.png"></div>
-                    <div class="bake-slide"><img src="Bake Sale/Screenshot 2026-04-09 at 5.09.02 PM.png"></div>
+                    <div class="bake-slide active"><img src="Bake Sale/IMG_5667.webp"></div>
+                    <div class="bake-slide"><img src="Bake Sale/IMG_6507 copy.webp"></div>
+                    <div class="bake-slide"><img src="Bake Sale/IMG_6512 copy.webp"></div>
+                    <div class="bake-slide"><img src="Bake Sale/IMG_6515.webp"></div>
+                    <div class="bake-slide"><img src="Bake Sale/Screenshot 2026-04-09 at 5.05.29 PM.webp"></div>
+                    <div class="bake-slide"><img src="Bake Sale/Screenshot 2026-04-09 at 5.09.02 PM.webp"></div>
 
                     <div class="bake-controls">
                         <div class="bake-btn" onclick="nextBakeSlide(-1)">&#10094;</div>

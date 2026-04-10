@@ -33,7 +33,7 @@ reflection_day_content = """
                 <!-- Section 1: Alternating Layout (Image Left, Text Right) -->
                 <div class="lead-row fade-up" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; margin-bottom: 8rem;">
                     <div class="lead-image" style="aspect-ratio: 16/10; overflow: hidden; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                        <img src="Building Communities From Scratch/reflection_planning.png" alt="Planning and Logistics" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="Building Communities From Scratch/reflection_planning.webp" alt="Planning and Logistics" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="lead-text">
                         <span class="lead-tag">PHASE 1</span>
@@ -54,7 +54,7 @@ reflection_day_content = """
                         </p>
                     </div>
                     <div class="lead-image" style="order: 2; aspect-ratio: 16/10; overflow: hidden; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                        <img src="Building Communities From Scratch/Reflection Day.png" alt="Event Execution" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="Building Communities From Scratch/Reflection Day.webp" alt="Event Execution" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                 </div>
             </div>
