@@ -54,7 +54,7 @@ reflection_day_content = """
                         </p>
                     </div>
                     <div class="lead-image" style="order: 2; aspect-ratio: 16/10; overflow: hidden; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                        <img src="Building Communities From Scratch/Reflection Day.webp" alt="Event Execution" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="Building Communities From Scratch/Reflection Day/Phase 2.webp" alt="Event Execution" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                 </div>
             </div>
