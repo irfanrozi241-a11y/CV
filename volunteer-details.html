@@ -186,12 +186,17 @@
             transition: 0.3s;
         }
 
+        body.no-scroll {
+            overflow: hidden;
+        }
+
         /* 2. Hero Section */
         #hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             padding-top: var(--header-height);
+            padding-bottom: 4rem;
         }
 
         .hero-grid {
@@ -453,27 +458,125 @@
             margin-bottom: 1rem;
         }
 
-        /* Space for Volunteer */
+        /* 4. Volunteer */
         #volunteer {
-            text-align: center;
-            padding: 6rem 0;
+            padding: 8rem 0;
             background-color: var(--surface);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
         }
 
+        #volunteer .container {
+            max-width: 1200px;
+        }
+
         .vol-num {
-            font-size: clamp(4rem, 8vw, 6rem);
+            font-size: clamp(3rem, 6vw, 4rem);
             font-weight: 700;
-            color: var(--accent);
+            color: #C8913A;
             line-height: 1;
             margin-bottom: 1rem;
+            text-align: center;
         }
 
         .vol-desc {
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto 4rem auto;
             font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .volunteer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .volunteer-card {
+            background: white;
+            flex: 0 1 calc(33.333% - 1.4rem);
+            min-width: 280px;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            border-top: 4px solid #C8913A;
+            text-align: left;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .volunteer-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .vol-card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .vol-card-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .vol-card-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .vol-card-stat {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #C8913A;
+            margin-bottom: 1rem;
+        }
+
+        .vol-card-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        @media (max-width: 1100px) {
+            .volunteer-card {
+                flex: 0 1 calc(50% - 1rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .volunteer-card {
+                flex: 0 1 100%;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .volunteer-grid {
+                gap: 1.5rem;
+            }
+
+            .volunteer-card {
+                padding: 1.5rem;
+            }
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
         /* 5. Recognition */
@@ -508,8 +611,127 @@
 
         .award-title {
             font-size: 1.15rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             color: var(--text-primary);
+        }
+
+        .award-description {
+            color: #6B6B6B;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 1rem 0;
+            max-width: 100%;
+        }
+
+        /* Award Slideshow Styles */
+        .award-slideshow {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .ss-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ss-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ss-slide.active {
+            opacity: 1;
+        }
+
+        .ss-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .ss-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.85);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            color: var(--accent);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .ss-nav:hover {
+            opacity: 1;
+            background: #fff;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .ss-prev {
+            left: 10px;
+        }
+
+        .ss-next {
+            right: 10px;
+        }
+
+        .ss-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .ss-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #D1D1D1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ss-dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .award-slideshow {
+                height: 160px;
+            }
         }
 
         .award-context {
@@ -723,81 +945,77 @@
         }
 
         .right-col {
-            position: relative;
-            width: 100%;
-        }
-
-        .ib-slide {
-            display: none;
-            animation: ib-fade 0.5s ease-in-out;
-        }
-
-        .ib-slide.active {
-            display: block;
-        }
-
-        .ib-slide .ee-card {
-            min-height: 280px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
+            gap: 2rem;
+            position: relative;
         }
 
-        @keyframes ib-fade {
-            from {opacity: .4} 
-            to {opacity: 1}
+        /* IB Slider styles */
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
         }
 
-        .ib-controls {
+        .slider-track {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform;
         }
 
-        .ib-btn {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            color: var(--accent);
-            width: 36px;
-            height: 36px;
+        #ib .ee-card {
+            flex: 0 0 100%;
+            margin-bottom: 0;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #ib .ee-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: var(--border);
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            font-size: 16px;
-            user-select: none;
+            border: 2px solid transparent;
         }
 
-        .ib-btn:hover {
-            background: var(--accent);
-            color: white;
+        .dot:hover {
             border-color: var(--accent);
         }
 
-        .ib-dot-container {
-            display: flex;
-            gap: 8px;
-        }
-
-        .ib-dot {
-            cursor: pointer;
-            height: 10px;
-            width: 10px;
-            background-color: var(--border);
-            border-radius: 50%;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .ib-active-dot, .ib-dot:hover {
-            background-color: var(--accent);
+        .dot.active {
+            background: var(--accent);
             transform: scale(1.2);
+            width: 24px;
+            border-radius: 10px;
+        }
+
+        .click-hint {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 2.5rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.7;
+            pointer-events: none;
         }
 
         /* 9. Contact */
@@ -874,6 +1092,12 @@
         }
 
         @media (max-width: 992px) {
+            #hero {
+                padding-top: calc(var(--header-height) + 2rem);
+                padding-bottom: 4rem;
+                height: auto;
+            }
+
             .hero-h1 {
                 font-size: clamp(3rem, 6vw, 4rem);
             }
@@ -909,6 +1133,7 @@
             }
 
             .awards-grid,
+            .skills-grid,
             .entrepreneur-grid,
             .films-grid {
                 grid-template-columns: 1fr;
@@ -928,7 +1153,8 @@
             .nav-links {
                 position: fixed;
                 top: 0;
-                right: -100%;
+                right: 0;
+                transform: translateX(100%);
                 height: 100vh;
                 width: 70%;
                 max-width: 300px;
@@ -936,13 +1162,14 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                transition: 0.4s ease;
+                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
                 box-shadow: -5px 0 20px rgba(0, 0, 0, 0.05);
                 border-left: 1px solid var(--border);
+                will-change: transform;
             }
 
             .nav-links.active {
-                right: 0;
+                transform: translateX(0);
             }
 
             .hamburger.active span:nth-child(1) {
@@ -970,6 +1197,10 @@
             .stat-item:nth-child(1)::after,
             .stat-item:nth-child(3)::after {
                 right: -0.5rem;
+            }
+
+            .stat-num {
+                font-size: clamp(1.6rem, 5vw, 2.2rem);
             }
 
             .lead-row {
@@ -1001,10 +1232,16 @@
                 /* Safari and Chrome */
             }
 
-            .award-card {
+            .award-card-link {
                 min-width: 280px;
                 scroll-snap-align: start;
                 flex: 0 0 auto;
+                display: block;
+            }
+
+            .award-card {
+                width: 100%;
+                height: 100%;
             }
 
             .footer-container {
@@ -1030,6 +1267,10 @@
 
             .mun-quote {
                 font-size: 1.5rem;
+            }
+
+            .ee-card {
+                padding: 2rem 1.25rem;
             }
         }
     </style>
@@ -1186,56 +1427,45 @@
                     <!-- Slide 1 -->
                     <div class="slide active">
                         <div class="slide-content">
-                            <div class="gallery-tag">NATIONAL HONOR SOCIETY</div>
-                            <h2 class="gallery-title">NHS Member</h2>
-                            <p class="gallery-desc" style="margin: 0;">As a member of the National Honor Society, consistently contributed to school and community service initiatives throughout high school. Membership required maintaining academic standards alongside an active commitment to volunteering, leadership, and service beyond the classroom.</p>
+                            <div class="gallery-tag">LEADERSHIP</div>
+                            <h2 class="gallery-title">National Honor Society</h2>
+                            <p class="gallery-desc" style="margin: 0;">Serving through the National Honor Society, I organized peer tutoring, managed community clean-ups, and coordinated school-wide charity drives. Consistency and reliable commitment were key to my role.</p>
                         </div>
                         <div class="slide-image">
-                            <img src="Volunteer/NHS Member.webp" alt="NHS Member">
+                            <img src="nhs_volunteering.webp" alt="National Honor Society Volunteering">
                         </div>
                     </div>
                     <!-- Slide 2 -->
                     <div class="slide">
                         <div class="slide-content">
-                            <div class="gallery-tag">FUNDRAISING</div>
+                            <div class="gallery-tag">COMMUNITY EVENT</div>
                             <h2 class="gallery-title">Charity Bake Sale</h2>
-                            <p class="gallery-desc" style="margin: 0;">Co-organised a school charity bake sale from scratch, independently handling logistics, finance, and marketing for the full event. Coordinated everything from sourcing baked goods to managing the stall on the day. The event successfully raised AED 2,000 for a local cause and ran without issues from start to finish.</p>
+                            <p class="gallery-desc" style="margin: 0;">Beyond the logistics and planning, the bake sale involved extensive volunteer hours coordinating teams, managing booths on the day, and ensuring total transparency for the AED 2,000+ raised.</p>
                         </div>
                         <div class="slide-image">
-                            <img src="Volunteer/Charity Bake Sale.webp" alt="Charity Bake Sale">
+                            <img src="bake_sale.webp" alt="Charity Bake Sale">
                         </div>
                     </div>
                     <!-- Slide 3 -->
                     <div class="slide">
                         <div class="slide-content">
-                            <div class="gallery-tag">EVENT LEADERSHIP · NHS</div>
-                            <h2 class="gallery-title">Reflection Day Organiser</h2>
-                            <p class="gallery-desc" style="margin: 0;">Served as Lead Organiser for Reflection Day, a formal three-course dinner attended by over 120 guests including students, parents, teachers, and senior leadership. Built the event from zero, coordinating over 30 students across logistics, finance, design, media production, and catering. Co-hosted the formal programme on the night while managing real-time issues as they arose.</p>
+                            <div class="gallery-tag">ENVIRONMENT</div>
+                            <h2 class="gallery-title">Sustainability Ambassador</h2>
+                            <p class="gallery-desc" style="margin: 0;">Dedicated extensive hours to promoting sustainability on campus and in the local community. This included organizing recycling initiatives and raising awareness about ecological footprints among the student body.</p>
                         </div>
                         <div class="slide-image">
-                            <img src="Volunteer/Reflection Day Organiser.webp" alt="Reflection Day Organiser" style="object-position: 90% center;">
+                            <img src="sustainability.webp" alt="Sustainability Ambassador">
                         </div>
                     </div>
                     <!-- Slide 4 -->
                     <div class="slide">
                         <div class="slide-content">
-                            <div class="gallery-tag">IB CONFERENCE</div>
-                            <h2 class="gallery-title">Conference Usher</h2>
-                            <p class="gallery-desc" style="margin: 0;">Volunteered as an usher at a formal IB Conference, responsible for managing guest movement, directing attendees to the correct sessions, and maintaining a smooth flow throughout the day. Represented the school in a professional setting and handled day-of logistics on the ground.</p>
+                            <div class="gallery-tag">MENTORSHIP</div>
+                            <h2 class="gallery-title">Debate Club Mentoring</h2>
+                            <p class="gallery-desc" style="margin: 0;">Volunteered significant time as a mentor for younger students in the Debate Club, guiding them step-by-step through argument structuring, public speaking techniques, and building intellectual confidence.</p>
                         </div>
                         <div class="slide-image">
-                            <img src="Volunteer/Conference Usher.webp" alt="Conference Usher">
-                        </div>
-                    </div>
-                    <!-- Slide 5 -->
-                    <div class="slide">
-                        <div class="slide-content">
-                            <div class="gallery-tag">COMMUNITY INITIATIVE</div>
-                            <h2 class="gallery-title">Beach Clean-Up and Outreach</h2>
-                            <p class="gallery-desc" style="margin: 0;">Took part in a community beach clean-up initiative as part of a broader environmental effort, working alongside peers to clear and maintain a public beach area. Also helped organise and distribute water to members of the public during a separate community outreach drive, contributing directly to local welfare efforts.</p>
-                        </div>
-                        <div class="slide-image">
-                            <img src="Volunteer/Beach Clean-Up and Outreach.webp" alt="Beach Clean-Up and Outreach">
+                            <img src="debate_club.webp" alt="Debate Club Mentoring">
                         </div>
                     </div>
 
@@ -1248,7 +1478,6 @@
                     <span class="dot" onclick="currentSlide(2)"></span> 
                     <span class="dot" onclick="currentSlide(3)"></span> 
                     <span class="dot" onclick="currentSlide(4)"></span> 
-                    <span class="dot" onclick="currentSlide(5)"></span> 
                 </div>
 
             </div>
@@ -1285,7 +1514,7 @@
 
 <footer>
         <div class="container footer-container">
-            <span>&copy; 2025 Muhammad Irfan. All rights reserved.</span>
+            <span>&copy; 2026 Muhammad Irfan. All rights reserved.</span>
             <span>
                 <a href="https://www.linkedin.com/in/muhammad-irfan-29099828a" target="_blank" rel="noopener noreferrer"
                     style="margin-right: 1.5rem; transition: color 0.3s ease;">LinkedIn</a>
@@ -1303,6 +1532,7 @@
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
         });
 
         // Close mobile menu when link is clicked
@@ -1310,7 +1540,17 @@
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
+                document.body.classList.remove('no-scroll');
             });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            }
         });
 
         // 2. Sticky Header styling on scroll
@@ -1343,32 +1583,157 @@
             observer.observe(el);
         });
 
-        // 4. IB Slideshow Logic
-        let ibSlideIndex = 1;
+        // 4. IB Section Slider Logic
+        const sliderTrack = document.getElementById('ibSliderTrack');
+        const sliderCards = sliderTrack.querySelectorAll('.ee-card');
+        const sliderDots = document.querySelectorAll('#ibSliderDots .dot');
+        let ibCurrentIndex = 0;
 
-        function plusIbSlides(n) {
-            showIbSlides(ibSlideIndex += n);
+        function updateIBSlider(index) {
+            ibCurrentIndex = index;
+            sliderTrack.style.transform = `translateX(-${index * 100}%)`;
+
+            // Update dots
+            sliderDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
         }
 
-        function currentIbSlide(n) {
-            showIbSlides(ibSlideIndex = n);
-        }
+        sliderCards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                const nextIndex = (index + 1) % sliderCards.length;
+                updateIBSlider(nextIndex);
+            });
+        });
 
-        function showIbSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("ib-slide");
-            let dots = document.getElementsByClassName("ib-dot");
-            if (n > slides.length) {ibSlideIndex = 1}    
-            if (n < 1) {ibSlideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].classList.remove("active");  
+        sliderDots.forEach((dot, index) => {
+            dot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                updateIBSlider(index);
+            });
+        });
+
+        // Touch Swipe gestures for IB Slider on mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        sliderTrack.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        sliderTrack.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const threshold = 50; // Minimum swipe distance in pixels
+            const diffX = touchStartX - touchEndX;
+            if (Math.abs(diffX) > threshold) {
+                if (diffX > 0) {
+                    // Swiped left -> next card
+                    const nextIndex = (ibCurrentIndex + 1) % sliderCards.length;
+                    updateIBSlider(nextIndex);
+                } else {
+                    // Swiped right -> prev card
+                    const prevIndex = (ibCurrentIndex - 1 + sliderCards.length) % sliderCards.length;
+                    updateIBSlider(prevIndex);
+                }
             }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].classList.remove("ib-active-dot");
-            }
-            slides[ibSlideIndex-1].classList.add("active");
-            dots[ibSlideIndex-1].classList.add("ib-active-dot");
         }
+        // 5. Award Cards Slideshow Logic
+        function initAwardSlideshows() {
+            const slideshows = document.querySelectorAll('.award-slideshow');
+
+            slideshows.forEach(slideshow => {
+                const slides = slideshow.querySelectorAll('.ss-slide');
+                const prevBtn = slideshow.querySelector('.ss-prev');
+                const nextBtn = slideshow.querySelector('.ss-next');
+                const dotsContainer = slideshow.querySelector('.ss-dots');
+
+                let currentIndex = 0;
+                let autoAdvanceInterval;
+
+                // Create dots
+                slides.forEach((_, index) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('ss-dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        goToSlide(index);
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+
+                const dots = slideshow.querySelectorAll('.ss-dot');
+
+                function updateSlides() {
+                    slides.forEach((slide, index) => {
+                        slide.classList.toggle('active', index === currentIndex);
+                    });
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentIndex);
+                    });
+                }
+
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateSlides();
+                }
+
+                function prevSlide() {
+                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                    updateSlides();
+                }
+
+                function goToSlide(index) {
+                    currentIndex = index;
+                    updateSlides();
+                    resetAutoAdvance();
+                }
+
+                function startAutoAdvance() {
+                    autoAdvanceInterval = setInterval(nextSlide, 4000);
+                }
+
+                function stopAutoAdvance() {
+                    clearInterval(autoAdvanceInterval);
+                }
+
+                function resetAutoAdvance() {
+                    stopAutoAdvance();
+                    startAutoAdvance();
+                }
+
+                // Event Listeners
+                nextBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    nextSlide();
+                    resetAutoAdvance();
+                });
+
+                prevBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    prevSlide();
+                    resetAutoAdvance();
+                });
+
+                slideshow.addEventListener('mouseenter', stopAutoAdvance);
+                slideshow.addEventListener('mouseleave', startAutoAdvance);
+
+                // Initialize
+                startAutoAdvance();
+            });
+        }
+
+        // Initialize all scripts on load
+        document.addEventListener('DOMContentLoaded', () => {
+            initAwardSlideshows();
+        });
     </script>
 </body>
 

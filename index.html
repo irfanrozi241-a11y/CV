@@ -186,12 +186,17 @@
             transition: 0.3s;
         }
 
+        body.no-scroll {
+            overflow: hidden;
+        }
+
         /* 2. Hero Section */
         #hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             padding-top: var(--header-height);
+            padding-bottom: 4rem;
         }
 
         .hero-grid {
@@ -565,6 +570,13 @@
             .volunteer-card {
                 padding: 1.5rem;
             }
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
         /* 5. Recognition */
@@ -1080,6 +1092,12 @@
         }
 
         @media (max-width: 992px) {
+            #hero {
+                padding-top: calc(var(--header-height) + 2rem);
+                padding-bottom: 4rem;
+                height: auto;
+            }
+
             .hero-h1 {
                 font-size: clamp(3rem, 6vw, 4rem);
             }
@@ -1115,6 +1133,7 @@
             }
 
             .awards-grid,
+            .skills-grid,
             .entrepreneur-grid,
             .films-grid {
                 grid-template-columns: 1fr;
@@ -1134,7 +1153,8 @@
             .nav-links {
                 position: fixed;
                 top: 0;
-                right: -100%;
+                right: 0;
+                transform: translateX(100%);
                 height: 100vh;
                 width: 70%;
                 max-width: 300px;
@@ -1142,13 +1162,14 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                transition: 0.4s ease;
+                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
                 box-shadow: -5px 0 20px rgba(0, 0, 0, 0.05);
                 border-left: 1px solid var(--border);
+                will-change: transform;
             }
 
             .nav-links.active {
-                right: 0;
+                transform: translateX(0);
             }
 
             .hamburger.active span:nth-child(1) {
@@ -1176,6 +1197,10 @@
             .stat-item:nth-child(1)::after,
             .stat-item:nth-child(3)::after {
                 right: -0.5rem;
+            }
+
+            .stat-num {
+                font-size: clamp(1.6rem, 5vw, 2.2rem);
             }
 
             .lead-row {
@@ -1207,10 +1232,16 @@
                 /* Safari and Chrome */
             }
 
-            .award-card {
+            .award-card-link {
                 min-width: 280px;
                 scroll-snap-align: start;
                 flex: 0 0 auto;
+                display: block;
+            }
+
+            .award-card {
+                width: 100%;
+                height: 100%;
             }
 
             .footer-container {
@@ -1236,6 +1267,10 @@
 
             .mun-quote {
                 font-size: 1.5rem;
+            }
+
+            .ee-card {
+                padding: 2rem 1.25rem;
             }
         }
     </style>
@@ -1378,7 +1413,7 @@
                     storytelling.</p>
             </div>
 
-            <div class="awards-grid fade-up" style="margin-top: 1.5rem;">
+            <div class="skills-grid fade-up" style="margin-top: 1.5rem;">
                 <div class="skill-card">
                     <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -1562,7 +1597,7 @@
                 <div class="lead-row reverse fade-up">
                     <div class="lead-image">
                         <img src="website_developer.webp" alt="IBDP Website"
-                            style="width: 100%; height: auto; border-radius: 8px;">
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
                     </div>
                     <div class="lead-text">
                         <span class="lead-tag">IBDP · WEBSITE DEVELOPER</span>
@@ -1788,6 +1823,7 @@
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
         });
 
         // Close mobile menu when link is clicked
@@ -1795,7 +1831,17 @@
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
+                document.body.classList.remove('no-scroll');
             });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            }
         });
 
         // 2. Sticky Header styling on scroll
@@ -1857,6 +1903,35 @@
                 updateIBSlider(index);
             });
         });
+
+        // Touch Swipe gestures for IB Slider on mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        sliderTrack.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        sliderTrack.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const threshold = 50; // Minimum swipe distance in pixels
+            const diffX = touchStartX - touchEndX;
+            if (Math.abs(diffX) > threshold) {
+                if (diffX > 0) {
+                    // Swiped left -> next card
+                    const nextIndex = (ibCurrentIndex + 1) % sliderCards.length;
+                    updateIBSlider(nextIndex);
+                } else {
+                    // Swiped right -> prev card
+                    const prevIndex = (ibCurrentIndex - 1 + sliderCards.length) % sliderCards.length;
+                    updateIBSlider(prevIndex);
+                }
+            }
+        }
         // 5. Award Cards Slideshow Logic
         function initAwardSlideshows() {
             const slideshows = document.querySelectorAll('.award-slideshow');
