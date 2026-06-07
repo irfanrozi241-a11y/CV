@@ -1556,52 +1556,7 @@
         }
     </style>
 
-    <script>
-        // Slideshow Logic
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        let slideInterval;
 
-        function showSlide(index) {
-            if (!slides.length || !dots.length) return;
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
-            
-            currentSlide = (index + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-        }
-
-        function nextSlide() { showSlide(currentSlide + 1); }
-        function prevSlide() { showSlide(currentSlide - 1); }
-
-        function startAutoAdvance() {
-            slideInterval = setInterval(nextSlide, 4000);
-        }
-
-        function stopAutoAdvance() {
-            clearInterval(slideInterval);
-        }
-
-        const slideshowContainer = document.querySelector('.slideshow-container');
-        if (slideshowContainer) {
-            slideshowContainer.addEventListener('mouseenter', stopAutoAdvance);
-            slideshowContainer.addEventListener('mouseleave', startAutoAdvance);
-            startAutoAdvance();
-        }
-
-        // Intersection Observer for Underline Animation
-        const labelObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('.reveal-label').forEach(label => labelObserver.observe(label));
-    </script>
 <footer>
         <div class="container footer-container">
             <span>&copy; 2026 Muhammad Irfan. All rights reserved.</span>
